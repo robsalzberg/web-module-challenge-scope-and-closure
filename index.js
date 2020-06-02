@@ -28,10 +28,18 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * The difference is that counter1 is a High Order Function.  A Higher-Order function
+ * is a function that receives a function as an argument or returns the function as output.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ * counter1 because it has an outer function that is being called by an inner function.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ * counter1 should be used when you need the function to be reuseable.
+ * counter2 they are simpler to write and it is not always necessary to have closure.
+ * 
 */
 
 // counter1 code
@@ -43,6 +51,10 @@ function counterMaker() {
 }
 
 const counter1 = counterMaker();
+console.log(counter1(counterMaker()))
+console.log(counter1(counterMaker()))
+console.log(counter1(counterMaker()))
+console.log(counter1(counterMaker()))
 
 // counter2 code
 let count = 0;
@@ -50,7 +62,10 @@ let count = 0;
 function counter2() {
   return count++;
 }
-
+console.log(counter2())
+console.log(counter2())
+console.log(counter2())
+console.log(counter2())
 
 /* Task 2: inning() 
 
