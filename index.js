@@ -51,10 +51,6 @@ function counterMaker() {
 }
 
 const counter1 = counterMaker();
-console.log(counter1(counterMaker()))
-console.log(counter1(counterMaker()))
-console.log(counter1(counterMaker()))
-console.log(counter1(counterMaker()))
 
 // counter2 code
 let count = 0;
@@ -62,19 +58,15 @@ let count = 0;
 function counter2() {
   return count++;
 }
-console.log(counter2())
-console.log(counter2())
-console.log(counter2())
-console.log(counter2())
 
 /* Task 2: inning() 
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
 
-    /*Code Here*/
-
+  points = Math.floor(Math.random() * 3);
+  return points;
 }
 
 /* Task 3: finalScore()
