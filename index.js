@@ -83,13 +83,23 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, numInnings){
+  let score = {
+    Home: 0,
+    Away: 0
+  }
 
-  /*Code Here*/
-
+  for (i = 0; i < numInnings; i++) {
+    score.Home += inning();
+    score.Away += inning();
+    console.log(inning());
+  }
+  return score;
 }
 
-/* Task 4: 
+console.log(finalScore(inning,9));
+
+/* Task 4:
 
 Create a function called `scoreboard` that accepts the following parameters: 
 
