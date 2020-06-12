@@ -28,10 +28,18 @@ function processFirstItem(stringList, callback) {
  * 
  * 1. What is the difference between counter1 and counter2?
  * 
+ * The difference is that counter1 is a High Order Function.  A Higher-Order function
+ * is a function that receives a function as an argument or returns the function as output.
+ * 
  * 2. Which of the two uses a closure? How can you tell?
+ * 
+ * counter1 because it has an outer function that is being called by an inner function.
  * 
  * 3. In what scenario would the counter1 code be preferable? In what scenario would counter2 be better? 
  *
+ * counter1 should be used when you need the function to be reuseable.
+ * counter2 they are simpler to write and it is not always necessary to have closure.
+ * 
 */
 
 // counter1 code
@@ -51,15 +59,14 @@ function counter2() {
   return count++;
 }
 
-
 /* Task 2: inning() 
 
 Write a function called `inning` that generates a random number of points that a team scored in an inning. This should be a whole number between 0 and 2. */
 
-function inning(/*Code Here*/){
+function inning(){
 
-    /*Code Here*/
-
+  points = Math.floor(Math.random() * 3);
+  return points;
 }
 
 /* Task 3: finalScore()
@@ -76,13 +83,23 @@ finalScore(inning, 9) might return:
 
 */ 
 
-function finalScore(/*code Here*/){
+function finalScore(inning, numInnings){
+  let score = {
+    Home: 0,
+    Away: 0
+  }
 
-  /*Code Here*/
-
+  for (i = 0; i < numInnings; i++) {
+    score.Home += inning();
+    score.Away += inning();
+    console.log(inning());
+  }
+  return score;
 }
 
-/* Task 4: 
+console.log(finalScore(inning,9));
+
+/* Task 4:
 
 Create a function called `scoreboard` that accepts the following parameters: 
 
@@ -103,8 +120,30 @@ and returns the score at each pont in the game, like so:
 
 Final Score: 6 - 10 */
 
-function scoreboard(/* CODE HERE */) {
-  /* CODE HERE */
+function scoreboard(inning, numberInnings) {
+  let score = {
+    'Home': 0,
+    'Away': 0,
+  }
+  for (let i=0; i<numberInnings; i++){
+    score.Home += inning();
+    score.Away += inning();
+
+    function numberSuffix(){
+      if(i+1 === 1){
+        return 'st'
+      }else if (i+1 === 2){
+        return 'nd'
+      }else if (i+1 === 3){
+        return 'rd'
+      } else {
+        return 'th'
+      }
+    }
+
+  console.log(`${i+1}${numberSuffix()} inning: ${score.Home} - ${score.Away}`);
+  }
+  console.log(`Final Score : ${score.Home} - ${score.Away}`);
 }
 
-
+(scoreboard(inning, 9));
